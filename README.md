@@ -41,6 +41,7 @@ The first MVP version focuses only on:
 - Minimal chat-style interface
 
 The MVP explicitly excludes:
+
 - calendar visualization,
 - event editing,
 - recurring events,

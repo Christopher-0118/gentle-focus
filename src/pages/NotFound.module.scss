@@ -1,0 +1,35 @@
+.page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 48px 20px;
+  background: #f8faf8;
+  color: #17211b;
+}
+
+.content {
+  text-align: center;
+}
+
+.code {
+  margin: 0 0 8px;
+  color: #4f6f5d;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.title {
+  margin: 0 0 24px;
+  font-size: clamp(2rem, 8vw, 4rem);
+  line-height: 1;
+}
+
+.link {
+  color: #315c44;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}

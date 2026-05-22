@@ -1,0 +1,52 @@
+# Stack
+
+- React
+- TypeScript
+- Vite
+- SCSS modules
+- React Router
+- Framer Motion
+
+# Rules
+
+- Use functional components only
+- Use named exports
+- Avoid default exports except pages
+- Avoid prop drilling deeper than 2 levels
+- Prefer local state over global state
+- Do not introduce Redux unless requested
+- Keep components under 200 lines
+- Extract reusable logic into hooks
+- Prefer composition over inheritance
+
+# Styling
+
+- Use SCSS modules
+- One component = one scss module
+- Use kebab-case for class names
+- Avoid inline styles
+
+# File structure
+
+/components
+/pages
+/hooks
+/services
+/types
+/utils
+
+# API
+
+- Use async/await only
+- Always handle loading and error states
+- Never ignore rejected promises
+
+# Forms
+
+- Controlled inputs only
+
+# Typescript
+
+- Avoid any
+- Prefer explicit types for props
+- Use discriminated unions where appropriate
