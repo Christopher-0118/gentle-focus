@@ -1,13 +1,14 @@
 import { Router } from 'express';
 import { oauth2Client } from '../config/google';
 import { google } from 'googleapis';
+import { setCurrentTokens } from './auth.store';
 
 const authRoutes = Router();
 
 authRoutes.get('/google', (_, res) => {
   const url = oauth2Client.generateAuthUrl({
     access_type: 'offline',
-    scope: ['openid', 'profile', 'email'],
+    scope: ['openid', 'profile', 'email', 'https://www.googleapis.com/auth/calendar'],
   });
 
   res.redirect(url);
@@ -23,7 +24,7 @@ authRoutes.get('/google/callback', async (req, res) => {
   const { tokens } = await oauth2Client.getToken(code);
 
   oauth2Client.setCredentials(tokens);
-
+  setCurrentTokens(tokens);
   const oauth2 = google.oauth2({
     auth: oauth2Client,
     version: 'v2',

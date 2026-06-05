@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import authRoutes from './auth/auth.routes';
+import calendarRoutes from './calendar/calendar.routes';
 import { env } from './config/env';
 
 const app = express();
@@ -17,6 +18,7 @@ app.get('/', (_, res) => {
 });
 
 app.use('/auth', authRoutes);
+app.use('/calendar', calendarRoutes);
 
 app.listen(3000, () => {
   console.log('Server running on port 3000');
