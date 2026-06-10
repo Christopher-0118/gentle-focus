@@ -19,6 +19,7 @@
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "googleapis": "^172.0.0",
+    "openai": "^6.42.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.0.0"
