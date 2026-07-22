@@ -12,7 +12,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "prepare": "husky",
-    "server:dev": "tsx watch src/server/src/index.ts"
+    "server:dev": "tsx watch server/src/index.ts"
   },
   "dependencies": {
     "cors": "^2.8.6",

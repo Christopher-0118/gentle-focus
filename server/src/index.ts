@@ -6,7 +6,7 @@ import { env } from './config/env';
 import chatRoutes from './chat/chat.routes';
 
 const app = express();
-
+app.use(express.json());
 app.use(
   cors({
     origin: env.clientUrl,
