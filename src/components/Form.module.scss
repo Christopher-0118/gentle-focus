@@ -1,0 +1,84 @@
+@use '../styles' as *;
+
+.footer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  padding: $space-3 $space-4 $space-4;
+  border-top: 0.0625rem solid $color-border;
+  background: $color-surface;
+}
+
+.form {
+  display: flex;
+  align-items: flex-end;
+  gap: $space-2;
+  min-width: 0;
+  padding: $space-2;
+  border: 0.0625rem solid transparent;
+  border-radius: $radius-control;
+  background: $color-surface-muted;
+}
+
+.form:focus-within {
+  border-color: $color-accent;
+  box-shadow: 0 0 0 0.1875rem rgba($color-accent, 0.14);
+}
+
+.input {
+  min-width: 0;
+  flex: 1 1 auto;
+  min-height: 2.75rem;
+  max-height: 8rem;
+  padding: 0.6875rem $space-3;
+  border: 0;
+  outline: 0;
+  color: $color-text;
+  background: transparent;
+  line-height: 1.4;
+}
+
+.input::placeholder {
+  color: $color-text-muted;
+}
+
+.send {
+  @include focus-ring;
+  @include interactive-transition;
+
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  min-height: 2.75rem;
+  border-radius: 50%;
+  color: $color-accent-contrast;
+  background: $color-accent;
+  cursor: pointer;
+}
+
+.send:hover:not(:disabled) {
+  background: $color-accent-hover;
+}
+
+.send:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.sendIcon {
+  width: 1.15rem;
+  height: 1.15rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
+@include mobile {
+  .footer {
+    padding-inline: $space-3;
+    padding-bottom: max($space-3, env(safe-area-inset-bottom));
+  }
+}

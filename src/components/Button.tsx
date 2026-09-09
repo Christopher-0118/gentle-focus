@@ -1,8 +1,11 @@
+import styles from './Button.module.scss';
+
 const Button = (props: { text: string; onClick: () => void }) => {
   const { text, onClick } = props;
+
   return (
-    <button className="button" onClick={onClick}>
-      <span className="button-text">{text}</span>
+    <button className={styles.button} type="button" onClick={onClick}>
+      <span>{text}</span>
     </button>
   );
 };

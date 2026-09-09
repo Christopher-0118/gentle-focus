@@ -1,0 +1,25 @@
+@use '../styles' as *;
+
+.button {
+  @include focus-ring;
+  @include interactive-transition;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: $space-2 $space-4;
+  border-radius: 999px;
+  color: $color-accent-contrast;
+  background: $color-accent;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: $color-accent-hover;
+}
+
+.button:active {
+  transform: translateY(0.0625rem);
+}

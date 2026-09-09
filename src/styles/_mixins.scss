@@ -1,0 +1,26 @@
+@use 'tokens' as tokens;
+
+@mixin mobile {
+  @media (max-width: tokens.$mobile-breakpoint) {
+    @content;
+  }
+}
+
+@mixin focus-ring {
+  &:focus-visible {
+    outline: 0.1875rem solid rgba(tokens.$color-accent, 0.35);
+    outline-offset: 0.125rem;
+  }
+}
+
+@mixin interactive-transition {
+  transition:
+    color 160ms ease,
+    background-color 160ms ease,
+    border-color 160ms ease,
+    transform 160ms ease;
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}

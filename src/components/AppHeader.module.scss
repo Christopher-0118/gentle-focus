@@ -1,0 +1,48 @@
+@use '../styles' as *;
+
+.header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: $space-4;
+  min-height: 4.75rem;
+  padding: $space-3 $space-5;
+  border-bottom: 0.0625rem solid $color-border;
+  background: $color-surface;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  min-width: 0;
+}
+
+.logo {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  color: $color-accent-contrast;
+  background: $color-accent;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.name {
+  overflow: hidden;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@include mobile {
+  .header {
+    min-height: 4.25rem;
+    padding-inline: $space-4;
+  }
+}

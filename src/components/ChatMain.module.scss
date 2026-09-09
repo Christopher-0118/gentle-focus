@@ -1,0 +1,64 @@
+@use '../styles' as *;
+
+.main {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr);
+  min-height: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 15% 10%, rgba($color-accent, 0.09), transparent 32%), $color-surface;
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+  min-height: 0;
+  padding: $space-5;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+  width: fit-content;
+  max-width: min(82%, 34rem);
+  padding: $space-3 $space-4;
+  border-radius: $radius-message;
+  color: $color-text;
+  background: $color-surface-muted;
+  overflow-wrap: anywhere;
+}
+
+.messageUser {
+  align-self: flex-end;
+  border-bottom-right-radius: $space-1;
+  background: $color-accent-soft;
+}
+
+.messageAssistant {
+  align-self: flex-start;
+  border-bottom-left-radius: $space-1;
+}
+
+.messageMeta {
+  display: flex;
+  align-items: center;
+  gap: $space-1;
+  color: $color-text-muted;
+  font-size: 0.8125rem;
+}
+
+@include mobile {
+  .messages {
+    gap: $space-3;
+    padding: $space-4;
+  }
+
+  .message {
+    max-width: 90%;
+  }
+}
