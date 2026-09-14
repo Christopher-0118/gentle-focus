@@ -1,14 +1,17 @@
 import { KeyboardEvent, SubmitEvent, useState } from 'react';
-import { submitForm } from '@/services/api';
 
 import styles from './Form.module.scss';
 
-const Form = (formProps: { text: string }) => {
-  const { text } = formProps;
-  const [prompt, setPrompt] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
+type FormProps = {
+  text: string;
+  onSend: (prompt: string) => Promise<void>;
+  isSubmitting: boolean;
+};
 
-  const handleSubmit = async (event: SubmitEvent<HTMLFormElement>) => {
+const Form = ({ text, onSend, isSubmitting }: FormProps) => {
+  const [prompt, setPrompt] = useState('');
+
+  const handleSubmit = (event: SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const normalizedPrompt = prompt.trim();
@@ -17,20 +20,12 @@ const Form = (formProps: { text: string }) => {
       return;
     }
 
-    setIsSubmitting(true);
-
-    try {
-      await submitForm(normalizedPrompt);
-      setPrompt('');
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setIsSubmitting(false);
-    }
+    void onSend(normalizedPrompt);
+    setPrompt('');
   };
 
   const handleKeyDown = (event: KeyboardEvent<HTMLTextAreaElement>) => {
-    if (event.key === 'Enter' && !event.shiftKey) {
+    if (event.key === 'Enter' && !event.shiftKey && !event.nativeEvent.isComposing) {
       event.preventDefault();
       event.currentTarget.form?.requestSubmit();
     }
@@ -39,10 +34,8 @@ const Form = (formProps: { text: string }) => {
   return (
     <footer className={styles.footer}>
       <form className={styles.form} onSubmit={handleSubmit}>
-        <label htmlFor="chat-prompt" hidden>
-          Message
-        </label>
         <textarea
+          aria-label="Сообщение"
           id="chat-prompt"
           className={styles.input}
           value={prompt}

@@ -1,4 +1,5 @@
 import { AuthResponse } from '@/types/auth';
+import type { CreateEventResponse } from '@/types/chat';
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -23,7 +24,7 @@ export const logOut = async () => {
   }
 };
 
-export const submitForm = async (prompt: string) => {
+export const submitForm = async (prompt: string): Promise<CreateEventResponse> => {
   const response = await fetch(`${API_URL}/chat/create-event`, {
     method: 'POST',
     credentials: 'include',

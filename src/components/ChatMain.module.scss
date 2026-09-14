@@ -2,7 +2,7 @@
 
 .main {
   display: grid;
-  grid-template-rows: minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr);
   min-height: 0;
   overflow: hidden;
   background:
@@ -21,6 +21,7 @@
 }
 
 .message {
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   gap: $space-1;
@@ -31,6 +32,28 @@
   color: $color-text;
   background: $color-surface-muted;
   overflow-wrap: anywhere;
+}
+
+.historyHint {
+  padding: $space-3 $space-4 0;
+  color: $color-text-muted;
+  font-size: 0.8125rem;
+  text-align: center;
+}
+
+.messageText {
+  white-space: pre-wrap;
+}
+
+.eventLink {
+  @include focus-ring;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.pending {
+  flex-shrink: 0;
+  color: $color-text-muted;
 }
 
 .messageUser {
