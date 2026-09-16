@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import AppHeader from '@/components/AppHeader';
 import ChatMain from '@/components/ChatMain';
 import Form from '@/components/Form';
-import { submitForm } from '@/services/api';
+import { submitForm } from '@/services/form.service';
 import type { ChatMessage } from '@/types/chat';
 
 import styles from './Home.module.scss';

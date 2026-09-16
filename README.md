@@ -50,8 +50,6 @@ The MVP explicitly excludes:
 - notifications,
 - advanced scheduling,
 - mobile support.
-  <<<<<<< HEAD
-  =======
 
 ## MVP 2 Roadmap
 
@@ -92,5 +90,3 @@ The goal of MVP 2 is to make the assistant more reliable and expand calendar man
 ### Suggested Implementation Order
 
 `Auth Context → Request States → Improved Responses → Clarification Flow → Event Editing → Event Deletion`
-
-> > > > > > > main

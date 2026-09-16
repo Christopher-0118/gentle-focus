@@ -1,26 +1,12 @@
-import { useState, useEffect } from 'react';
-import { getCurrentUser } from '@/services/api';
+import { useContext } from 'react';
+import { AuthContext } from '@/contexts/AuthContext';
 
 export const useAuth = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const context = useContext(AuthContext);
 
-  useEffect(() => {
-    const loadUser = async () => {
-      try {
-        const response = await getCurrentUser();
-        setIsAuthenticated(response.authenticated);
-      } catch {
-        setError('Failed to load auth status');
-        setIsAuthenticated(false);
-      } finally {
-        setIsLoading(false);
-      }
-    };
+  if (context === undefined) {
+    throw new Error('useAuth must be used within an AuthProvider');
+  }
 
-    loadUser();
-  }, []);
-
-  return { error, isAuthenticated, isLoading, setIsAuthenticated };
+  return context;
 };

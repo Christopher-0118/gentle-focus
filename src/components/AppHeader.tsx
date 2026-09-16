@@ -1,19 +1,9 @@
 import Button from '@/components/Button';
 import { useAuth } from '@/hooks/useAuth';
 import styles from './AppHeader.module.scss';
-import { logOut, loginWithGoogle } from '@/services/api';
 
 const AppHeader = () => {
-  const { isAuthenticated, setIsAuthenticated } = useAuth();
-
-  const handleClick = async () => {
-    if (isAuthenticated) {
-      await logOut();
-      setIsAuthenticated(false);
-    } else {
-      loginWithGoogle();
-    }
-  };
+  const { isAuthenticated, isLoading, error, login, logout } = useAuth();
   return (
     <header className={styles.header}>
       <div className={styles.brand}>
@@ -23,7 +13,12 @@ const AppHeader = () => {
         <span className={styles.name}>Gentle Focus</span>
       </div>
 
-      <Button text={isAuthenticated ? 'Logout' : 'Login'} onClick={handleClick} />
+      {error && <span role="alert">{error}</span>}
+      <Button
+        text={isAuthenticated ? 'Logout' : 'Login'}
+        onClick={isAuthenticated ? logout : login}
+        disabled={isLoading}
+      />
     </header>
   );
 };
