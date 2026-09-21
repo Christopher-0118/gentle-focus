@@ -3,6 +3,7 @@ export type ChatMessage = {
   role: 'user' | 'assistant';
   text: string;
   eventLink?: string;
+  event?: EventConfirmation;
 };
 
 export type CreateEventResponse = {
@@ -10,5 +11,17 @@ export type CreateEventResponse = {
     message: string;
     summary?: string | null;
     htmlLink?: string | null;
+    start?: EventDateTime | null;
+    end?: EventDateTime | null;
   };
+};
+
+type EventDateTime = {
+  dateTime?: string | null;
+  timeZone?: string | null;
+};
+
+export type EventConfirmation = {
+  title: string;
+  schedule?: string;
 };

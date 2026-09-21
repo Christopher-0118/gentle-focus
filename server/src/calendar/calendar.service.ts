@@ -39,5 +39,7 @@ export const createCalendarEvent = async (eventData: EventData) => {
     id: data.id,
     summary: data.summary,
     htmlLink: data.htmlLink,
+    start: data.start,
+    end: data.end,
   };
 };

@@ -47,8 +47,59 @@
 
 .eventLink {
   @include focus-ring;
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
+  align-self: flex-start;
+  padding: $space-3 $space-4;
+  border-radius: $radius-control;
+  background: $color-accent;
+  color: $color-accent-contrast;
+  text-decoration: none;
+
+  &:hover {
+    background: $color-accent-hover;
+  }
+}
+
+.event-card {
+  gap: $space-4;
+  padding: $space-5;
+  background: #edf9f9;
+}
+
+.event-header {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-3;
+}
+
+.event-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 1rem;
+  background: #e7f4ed;
+  color: #72776c;
+
+  svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+.event-details {
+  min-width: 0;
+}
+
+.event-title {
+  font-weight: 600;
+  color: #292b24;
+}
+
+.event-schedule {
+  margin-top: $space-1;
+  color: #73766c;
+  font-size: 0.9375rem;
 }
 
 .pending {

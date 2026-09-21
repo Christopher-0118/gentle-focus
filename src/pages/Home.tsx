@@ -3,7 +3,8 @@ import AppHeader from '@/components/AppHeader';
 import ChatMain from '@/components/ChatMain';
 import Form from '@/components/Form';
 import { submitForm } from '@/services/form.service';
-import type { ChatMessage } from '@/types/chat';
+import { formatEventConfirmation } from '@/utils/formatEventConfirmation';
+import type { ChatMessage } from '@/types/chat.types';
 
 import styles from './Home.module.scss';
 
@@ -26,9 +27,8 @@ export function HomePage() {
       const reply: ChatMessage = {
         id: crypto.randomUUID(),
         role: 'assistant',
-        text: createdEvent.summary
-          ? `Событие «${createdEvent.summary}» создано.`
-          : 'Событие создано.',
+        text: 'Событие создано.',
+        event: formatEventConfirmation(createdEvent),
         eventLink: createdEvent.htmlLink ?? undefined,
       };
       setMessages((previous) => [...previous, reply]);
